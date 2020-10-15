@@ -17,7 +17,8 @@
   	<body>
 
   		<div id="container">
-  			<div id="score">0</div>
+  			<div class="text">Score:</div><div id="score" class="text">0</div><div style="clear:both;"></div>
+  			<div class="text">Best score:</div><div id="bestscore" class="text">0</div><div style="clear:both;"></div>
     		<canvas id="snakeboard" width="400" height="400"></canvas>
     		<div id="foot">Snake by Łukasz Borówka</div>
   		</div>
@@ -50,6 +51,12 @@
       			text-align: right;
       			font-size: 8px;
       		}
+      		.text
+      		{
+      			float: left;
+      			font-size: 40px;
+      			margin-right: 10px;
+      		}
     	</style>
   	</body>
 
@@ -74,6 +81,7 @@
       	let foodY = 5;
 
       	let score = 0;
+      	let bestScore = 0;
 
       	let changingDirection = false;
 
@@ -88,9 +96,6 @@
 	    setup();
 	    function setup()
 	    {
-	    	clearCanvas();
-	    	drawSnake();
-
 	    	snake = [
     		{x: 200, y: 200},
       		{x: 190, y: 200},
@@ -98,6 +103,14 @@
       		{x: 170, y: 200},
       		{x: 160, y: 200}
       		];
+
+      		score = 0;
+      		document.getElementById("score").innerHTML = score;
+      		document.getElementById("bestscore").innerHTML = bestScore;
+
+
+      		clearCanvas();
+	    	drawSnake();
 	    }
 
 	    generateFood();
@@ -109,7 +122,12 @@
 		{
 			if(gameStarted)
 			{
-				if(hasGameEnded()) return;
+				if(hasGameEnded())
+				{
+					score = 0;
+					gameStarted = false;
+					return;
+				}
 
 	   			changingDirection = false;
 	   			setTimeout(function onTick() 
@@ -170,6 +188,11 @@
       		{
       			score += 10;
       			document.getElementById('score').innerHTML = score;
+      			if(score > bestScore) 
+				{
+					bestScore = score;
+					document.getElementById('bestscore').innerHTML = bestScore;
+				}
       			generateFood();
       		}
       		else
@@ -183,6 +206,7 @@
     		if(!gameStarted)
     		{
     			gameStarted = true;
+    			setup();
     			main();
     		}
 
