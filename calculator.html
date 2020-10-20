@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<title>Kalkulator</title>
+
+	<meta charset="utf-8">
+	
+	<!-- <meta name="description" content=""> -->
+	<!-- <meta name="keywords" content=""> -->
+	<meta name="author" content="Łukasz Borówka">
+	<meta http-equiv="X-Ua-Compatible" content="IE=edge">
+
+	<style type="text/css">
+		h3
+		{
+			margin: 0;
+			margin-right: 7px;
+			float: left;
+		}
+		main
+		{
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 50px;
+		}
+		form
+		{
+			margin-bottom: 9px;
+		}
+		.back
+        {
+        	position: fixed;
+        	top: 15px;
+        	left: 15px;
+        	font-size: 18px;
+        }
+        a{color: black;}
+        a:link {text-decoration: none}
+        a:visited {text-decoration: none}
+        a:active {text-decoration: none}
+        a:hover {text-decoration: underline}
+	</style>
+
+</head>
+<body>
+
+	<script type="text/javascript" src="calculator.js"></script>
+
+	<div class="back">
+    	<a href="index.html">Wstecz</a>
+    </div>
+
+	<main>
+		<h2>Kalkulator</h2>
+
+		<form>
+
+			<label for="alpha">Miara kąta &#8737;&#945;</label> <br>
+			<input type="text" name="alpha" id="alpha"> <br> <br>
+
+			<label for="f">Współczynnik tarcia (f)</label> <br>
+			<input type="text" name="f" id="fs"> <br> <br>
+
+			<label for="R">Promień zakrętu (R)</label> <br>
+			<input type="text" name="R" id="radius"> <br> <br>
+
+			<input type="button" value="Oblicz" onclick="calculate();">
+
+		</form>
+
+		<h3>Max szybkość v:</h3><h3 id="output">0</h3><h3>m/s</h3>
+
+	</main>
+
+</body>
+</html>
